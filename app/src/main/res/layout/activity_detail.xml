@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/tv_detail_recipe_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                tools:src="@tools:sample/avatars" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom">
+
+                <TextView
+                    android:id="@+id/tv_recipe_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@android:color/white"
+
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="#80000000"
+                    android:drawablePadding="4dp"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    />
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_detail_recipe_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:textStyle="bold"
+            android:textAppearance="?attr/textAppearanceHeadline5"
+            android:text="Judul Resep"/>
+
+        <View style="@style/divider"/>
+
+        <TextView
+            style="@style/TextViewDetail"
+            android:textSize="20sp"
+            android:text="Deskripsi"/>
+
+        <TextView
+            android:id="@+id/tv_detail_recipe_description"
+            style="@style/TextViewDetail" />
+
+        <View style="@style/divider"/>
+
+        <TextView
+            style="@style/TextViewDetail"
+            android:textSize="20sp"
+            android:text="Bahan Masak"/>
+
+        <TextView
+            android:id="@+id/tv_detail_recipe_ingredients"
+            style="@style/TextViewDetail" />
+
+        <View style="@style/divider"/>
+
+        <TextView
+            style="@style/TextViewDetail"
+            android:textSize="20sp"
+            android:text="Langkah-langkah Memasak"/>
+
+        <TextView
+            android:id="@+id/tv_detail_recipe_steps"
+            style="@style/TextViewDetail" />
+    </LinearLayout>
+</ScrollView>

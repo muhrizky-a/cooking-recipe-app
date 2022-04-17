@@ -1,0 +1,212 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/icon_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toBottomOf="@id/txtTitle"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/txtTitle"
+        app:srcCompat="@drawable/ic_title" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtTitle"
+        style="@style/TextInputStyle"
+        android:hint="Judul Resep"
+        app:layout_constraintStart_toEndOf="@id/icon_title"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/title_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/icon_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toBottomOf="@id/txtDescription"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/txtDescription"
+        app:srcCompat="@drawable/ic_description" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        style="@style/TextInputStyle"
+        android:hint="Deskripsi Resep"
+        app:layout_constraintStart_toEndOf="@id/icon_description"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/description_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/icon_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toBottomOf="@id/txtCategory"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/txtCategory"
+        app:srcCompat="@drawable/ic_category" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        style="@style/TextInputStyle"
+        android:hint="Kategori"
+        app:layout_constraintStart_toEndOf="@id/icon_category"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescription">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/category_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/icon_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/button_upload"
+        app:layout_constraintBottom_toBottomOf="@id/button_upload"
+        app:srcCompat="@drawable/ic_image" />
+
+    <Button
+        android:id="@+id/button_upload"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="Upload Gambar"
+
+        app:layout_constraintStart_toEndOf="@id/icon_image"
+        app:layout_constraintTop_toBottomOf="@id/txtCategory" />
+
+
+
+    <ImageView
+        android:id="@+id/recipe_form_image_preview"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginStart="32dp"
+
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toEndOf="@id/icon_image"
+        app:layout_constraintTop_toBottomOf="@id/button_upload"
+        />
+
+    <View
+        android:id="@+id/divider"
+        style="@style/divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recipe_form_image_preview"/>
+
+    <ImageView
+        android:id="@+id/icon_ingredients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/txtIngredients"
+        app:layout_constraintBottom_toBottomOf="@id/txtIngredients"
+        app:srcCompat="@drawable/ic_fastfood" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtIngredients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        style="@style/TextInputStyle"
+        android:hint="Bahan Masak"
+        app:layout_constraintStart_toEndOf="@id/icon_ingredients"
+        app:layout_constraintTop_toBottomOf="@+id/divider">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ingredients_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minLines="3"
+            android:inputType="textMultiLine" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/icon_steps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/txtSteps"
+        app:layout_constraintBottom_toBottomOf="@id/txtSteps"
+        app:srcCompat="@drawable/ic_description" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtSteps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        style="@style/TextInputStyle"
+        android:hint="Langkah-Langkah"
+        app:layout_constraintStart_toEndOf="@id/icon_steps"
+        app:layout_constraintTop_toBottomOf="@+id/txtIngredients">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/steps_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minLines="3"
+            android:inputType="textMultiLine" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+    <Button
+        android:id="@+id/button_confirm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Tambah Resep"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtSteps" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
