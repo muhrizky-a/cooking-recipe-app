@@ -6,6 +6,7 @@ An app for listing cooking recipe is what came to my mind. The user can add the 
 ## Guide
 ### Main Page
 <img src="documentation/main-page.jpg?raw=true" width="200">
+
 ### Add Recipe
 ### Recipe Detail
 ### Edit Recipe
