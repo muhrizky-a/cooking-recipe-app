@@ -1,9 +1,6 @@
 package com.rizki.cookingrecipeapp.database.recipe
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -16,7 +13,13 @@ interface RecipeDao {
     suspend fun insert(recipe: Recipe)
 
     @Query("SELECT * FROM recipe_table WHERE id = :id")
-    fun getRecipeById(id: Int): Flow<List<Recipe>>
+    fun getRecipeById(id: Long): Recipe
+
+    @Update
+    suspend fun update(recipe: Recipe)
+
+    @Delete
+    suspend fun delete(recipe: Recipe)
 
     @Query("DELETE FROM recipe_table")
     suspend fun deleteAll()

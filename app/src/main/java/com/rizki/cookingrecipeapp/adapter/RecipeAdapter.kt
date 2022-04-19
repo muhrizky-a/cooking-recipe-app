@@ -81,9 +81,9 @@ class RecipeAdapter :
                     Toast.LENGTH_LONG
                 ).show()
             }
-            Log.d(TAG,"START")
+
             itemView.setOnClickListener(this)
-            Log.d(TAG,"FINISH")
+
         }
 
         companion object {
@@ -99,13 +99,7 @@ class RecipeAdapter :
             Log.d(TAG,"DONE")
 
             val intent = Intent( v?.context, DetailActivity::class.java)
-            intent.putExtra(IntentExtras.EXTRA_TITLE, data.title)
-            intent.putExtra(IntentExtras.EXTRA_IMAGE, data.image)
-            intent.putExtra(IntentExtras.EXTRA_CATEGORY, data.category)
-            intent.putExtra(IntentExtras.EXTRA_DESCRIPTION, data.description)
-            intent.putExtra(IntentExtras.EXTRA_INGREDIENTS, data.ingredients)
-            intent.putExtra(IntentExtras.EXTRA_STEPS, data.steps)
-
+            intent.putExtra(IntentExtras.EXTRA_ID, data.id)
             v!!.context.startActivity(intent)
 
         }

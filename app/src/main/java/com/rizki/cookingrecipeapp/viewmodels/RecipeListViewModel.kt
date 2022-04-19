@@ -12,6 +12,20 @@ class RecipeViewModel(private val repository: RecipeRepository): ViewModel() {
     fun insert(recipe: Recipe) = viewModelScope.launch {
         repository.insert(recipe)
     }
+
+    fun getRecipeById(id: Long): Recipe = repository.getRecipeById(id)
+    fun update(recipe: Recipe) = viewModelScope.launch {
+        repository.update(recipe)
+    }
+
+    fun changeDesc(recipe: Recipe) {
+        val newRecipe = recipe.copy( description = "Baruuu")
+        update(newRecipe)
+    }
+
+    fun delete(recipe: Recipe) = viewModelScope.launch {
+        repository.delete(recipe)
+    }
 }
 
 

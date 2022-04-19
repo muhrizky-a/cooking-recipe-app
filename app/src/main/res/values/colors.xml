@@ -8,5 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 <!--    -->
+    <color name="primaryGreen">#198E0C</color>
+    <color name="primaryVariantGreen">#88E17E</color>
     <color name="buttonLabel">#FFFFFF</color>
 </resources>

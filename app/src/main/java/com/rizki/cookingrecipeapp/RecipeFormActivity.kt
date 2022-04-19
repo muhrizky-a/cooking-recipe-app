@@ -1,6 +1,7 @@
 package com.rizki.cookingrecipeapp
 
 import android.app.Activity
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.database.Cursor
 import android.graphics.BitmapFactory
@@ -20,17 +21,27 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.textfield.TextInputEditText
+import com.rizki.cookingrecipeapp.database.recipe.Recipe
+import com.rizki.cookingrecipeapp.viewmodels.RecipeViewModel
+import com.rizki.cookingrecipeapp.viewmodels.RecipeViewModelFactory
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileNotFoundException
 
-var imagePath: String = ""
+
 
 class RecipeFormActivity : AppCompatActivity() {
 
+
+    private lateinit var recipe: Recipe
+    private lateinit var imagePath: String
     private lateinit var titleTxtView: TextInputEditText
     private lateinit var categoryTxtView: TextInputEditText
     private lateinit var descTxtView: TextInputEditText
@@ -42,8 +53,9 @@ class RecipeFormActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recipe_form)
 
+
         var actionBar = supportActionBar
-        if(actionBar != null) {
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
         }
 
@@ -54,6 +66,7 @@ class RecipeFormActivity : AppCompatActivity() {
         stepsTxtView = findViewById(R.id.steps_text)
 
         previewImgView = findViewById(R.id.recipe_form_image_preview)
+
 
         val uploadButton = findViewById<Button>(R.id.button_upload)
         val confirmButton = findViewById<Button>(R.id.button_confirm)
@@ -66,6 +79,7 @@ class RecipeFormActivity : AppCompatActivity() {
             startActivityForResult(photoPickerIntent, 6969)
         }
 
+
         confirmButton.setOnClickListener {
             val replyIntent = Intent()
             val isAllInputEmpty =
@@ -76,18 +90,39 @@ class RecipeFormActivity : AppCompatActivity() {
 
             if (isAllInputEmpty) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
-
             } else {
+
+
+                Log.d(TAG, "GAMBAR-BEFOREUPLOAD:$previewImgView.get")
                 replyIntent.putExtra(IntentExtras.EXTRA_TITLE, titleTxtView.text.toString())
                 replyIntent.putExtra(IntentExtras.EXTRA_DESCRIPTION, descTxtView.text.toString())
                 replyIntent.putExtra(IntentExtras.EXTRA_CATEGORY, categoryTxtView.text.toString())
                 replyIntent.putExtra(IntentExtras.EXTRA_IMAGE, imagePath)
-                replyIntent.putExtra(IntentExtras.EXTRA_INGREDIENTS, ingredientsTxtView.text.toString())
+                replyIntent.putExtra(
+                    IntentExtras.EXTRA_INGREDIENTS,
+                    ingredientsTxtView.text.toString()
+                )
                 replyIntent.putExtra(IntentExtras.EXTRA_STEPS, stepsTxtView.text.toString())
+                replyIntent.putExtra(IntentExtras.EXTRA_ID, intent.getLongExtra(IntentExtras.EXTRA_ID, 0L))
 
+
+//                val id = intent.getLongExtra(IntentExtras.EXTRA_ID, 0L)
+//                if(intent.getLongExtra(IntentExtras.EXTRA_ID, 0L) != -1L){
+//                }
+                Log.d(TAG, "GAMBAR-AFTERUPLOAD:$imagePath")
                 setResult(Activity.RESULT_OK, replyIntent)
             }
             finish()
+        }
+
+        val id = intent.getLongExtra(IntentExtras.EXTRA_ID, 0L)
+
+        if (id != -1L) {
+            supportActionBar?.title = "Ubah Resep"
+            confirmButton.text = "Ubah Resep"
+            populateData()
+        } else {
+            supportActionBar?.title = "Tambah Resep"
         }
     }
 
@@ -145,5 +180,26 @@ class RecipeFormActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    private val recipeViewModel: RecipeViewModel by viewModels {
+        RecipeViewModelFactory((application as RecipeApplication).repository)
+    }
 
+    private fun populateData() {
+        titleTxtView.setText(intent.getStringExtra(IntentExtras.EXTRA_TITLE))
+        categoryTxtView.setText(intent.getStringExtra(IntentExtras.EXTRA_CATEGORY))
+        descTxtView.setText(intent.getStringExtra(IntentExtras.EXTRA_DESCRIPTION))
+        ingredientsTxtView.setText(intent.getStringExtra(IntentExtras.EXTRA_INGREDIENTS))
+        stepsTxtView.setText(intent.getStringExtra(IntentExtras.EXTRA_STEPS))
+
+        imagePath = intent.getStringExtra(IntentExtras.EXTRA_IMAGE)!!
+        var uri: Uri = Uri.fromFile(File(imagePath))
+
+        try {
+            if (!File(imagePath).exists()) throw FileNotFoundException()
+            previewImgView.setImageURI(uri)
+        } catch (f: FileNotFoundException) {
+            previewImgView.setImageResource(R.drawable.no_image)
+        }
+
+    }
 }

@@ -61,6 +61,7 @@ class MainActivity : AppCompatActivity() {
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
             val intent = Intent(this@MainActivity, RecipeFormActivity::class.java)
+            intent.putExtra(IntentExtras.EXTRA_ID, -1L)
             startActivityForResult(intent, newRecipeActivityRequestCode)
         }
     }
@@ -96,12 +97,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             val recipe = Recipe(System.currentTimeMillis(), title, category, desc, imagePath, ingredients, steps)
-//            Log.d(TAG,"title:"+title)
-//            Log.d(TAG,"cat:"+category)
-//            Log.d(TAG,"desc:"+desc)
-//            Log.d(TAG,"image:"+imagePath)
-//            Log.d(TAG,"ingredients:"+ingredients)
-//            Log.d(TAG,"steps:"+steps)
             recipeViewModel.insert(recipe)
 
         } else {
@@ -110,7 +105,6 @@ class MainActivity : AppCompatActivity() {
                 R.string.empty_not_saved,
                 Toast.LENGTH_LONG
             )
-                //.show()
         }
     }
 

@@ -2,6 +2,7 @@ package com.rizki.cookingrecipeapp
 
 class IntentExtras {
     companion object {
+        const val EXTRA_ID = ""
         const val EXTRA_TITLE = "extra_title"
         const val EXTRA_IMAGE = "extra_img"
         const val EXTRA_CATEGORY = "extra_category"
