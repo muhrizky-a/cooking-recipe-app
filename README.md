@@ -5,6 +5,7 @@ It's Ramadhan! People may have a list of cooking recipe in their mind, and try t
 An app for listing cooking recipe is what came to my mind. The user can add the food with cooking recipe, view it, edit and delete the recipe.
 ## Guide
 ### Main Page
+![Main Page](.documentation/main-page.jpg?raw=true "Title")
 ### Add Recipe
 ### Recipe Detail
 ### Edit Recipe
