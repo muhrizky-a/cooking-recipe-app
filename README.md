@@ -4,7 +4,7 @@
 It's Ramadhan! People may have a list of cooking recipe in their mind, and try to cook it and eat it when "Berbuka Puasa" time has come.
 An app for listing cooking recipe is what came to my mind. The user can add the food with cooking recipe, view it, edit and delete the recipe.
 
-THis app is also participated in the first #JuaraAndroid program. Check my post and badges here: https://www.linkedin.com/posts/muhrizky-a_google-developer-profile-google-developers-activity-6921488735490519040-0zHR
+I created this app as one of the completion requirements for the first #JuaraAndroid program. Check my post and badges here: https://www.linkedin.com/posts/muhrizky-a_google-developer-profile-google-developers-activity-6921488735490519040-0zHR
 
 ## Guide
 ### 0. Installation
